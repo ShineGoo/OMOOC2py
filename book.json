@@ -1,4 +1,6 @@
 {
+    "description": "Lu's Notes on the OMOOC2py class",
+     
     "plugins": ["disqus"],
     "pluginsConfig": {
         "disqus": {
