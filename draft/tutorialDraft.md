@@ -87,3 +87,5 @@ Quick notes before the tutorials are finalized.
   ```
   最后两步需输入github.com与git.gitbook.com的用户名与密码。
   
+  Voila~
+  
