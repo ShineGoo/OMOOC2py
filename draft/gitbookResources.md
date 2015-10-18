@@ -3,6 +3,6 @@
 ## Official documentation
 1. Full documentation link
 
-[https://help.gitbook.com](https://help.gitbook.com/)
+   [https://help.gitbook.com](https://help.gitbook.com/)
 2. Shortcuts
   * [Markdown](https://help.gitbook.com/format/markdown.html)
