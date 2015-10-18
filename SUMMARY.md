@@ -6,4 +6,5 @@
 - [代码 (_src)](_src/README.md)
 - [素材 (draft)](draft/README.md)
   + [教程该怎么写](draft/how2tutorial.md)
+  + [其他](draft/how2tutorial.md)
 - [有关](ABOUT.md)
