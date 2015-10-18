@@ -8,4 +8,5 @@
   + [教程该怎么写](draft/how2tutorial.md)
   + [Useful Resources]()
     * [GitBook Resources](draft/gitbookResources.md)
+    * [Terminal related Resources](draft/terminalResources.md)
 - [有关](ABOUT.md)
