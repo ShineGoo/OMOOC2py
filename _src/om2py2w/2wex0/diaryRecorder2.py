@@ -22,27 +22,6 @@ def readDiary():
         No worries tough, I'll create one called 'myDiary.txt' for you.'''
     return printOut
     
-printOut = readDiary()
-
-label = ttk.Label(root, text = printOut + "\nEnter your one lien diary below:", wraplength = 300, background = 'white')
-label.grid(row=0, column=0, columnspan=2)
-
-entry = ttk.Entry(root, width = 30)
-entry.grid(row=1, column=0, columnspan=2)
-
-buttonSubmit = ttk.Button(root, text = "sumbit")
-buttonSubmit.grid(row=3, column=0)
-
-buttonLeave = ttk.Button(root, text = "leave", command = root.destroy)
-buttonLeave.grid(row=3, column=1)
-
-label2 = ttk.Label(root, text="")
-label2.grid(row=4,column=0, columnspan=2)
-
-buttonContinue = ttk.Button(root, text = "Yes")
-buttonDiscontinue = ttk.Button(root, text = "No", command = root.destroy)
-
-
 def getNewDiary():
     diaryNew = current_date_time + "\n" + entry.get() +"\n\n"
     txt2 = open("myDiary.txt", 'a')
@@ -50,9 +29,9 @@ def getNewDiary():
     txt2.close()
     print diaryNew
     label2.config(text="Your new diary has been saved.\nDo you want to write some more?")
-    label.config(text = printOut + "\n\n" + diaryNew +"\nEnter your one lien diary below:")
-    buttonContinue.grid(row=5, column=0)
-    buttonDiscontinue.grid(row=5, column=1)
+    T.insert(END, diaryNew)
+    buttonContinue.grid(row=6, column=0)
+    buttonDiscontinue.grid(row=6, column=1)
     buttonSubmit.state(['disabled'])
     buttonContinue.state(['!disabled'])
     buttonDiscontinue.state(['!disabled'])
@@ -64,6 +43,32 @@ def reEnter():
     buttonDiscontinue.state(['disabled'])
     label2.config(text="")
     
+printOut = readDiary()
+
+root.title("The Diary")
+
+T = Text(root)
+T.grid(row=0, column=0, columnspan=2)
+T.insert(END, printOut)
+
+label = ttk.Label(root, text = "\nEnter your one lien diary below:", wraplength = 300, background = 'white')
+label.grid(row=1, column=0, columnspan=2)
+
+entry = ttk.Entry(root, width = 30)
+entry.grid(row=2, column=0, columnspan=2)
+
+buttonSubmit = ttk.Button(root, text = "sumbit")
+buttonSubmit.grid(row=4, column=0)
+
+buttonLeave = ttk.Button(root, text = "leave", command = root.destroy)
+buttonLeave.grid(row=4, column=1)
+
+label2 = ttk.Label(root, text="")
+label2.grid(row=4,column=0, columnspan=2)
+
+buttonContinue = ttk.Button(root, text = "Yes")
+buttonDiscontinue = ttk.Button(root, text = "No", command = root.destroy)
+
 buttonSubmit.config(command = getNewDiary)
 buttonContinue.config(command = reEnter)
 
