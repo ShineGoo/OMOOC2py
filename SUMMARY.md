@@ -1,6 +1,6 @@
 # Summary
 - [教学反转](0MOOC/README.md)
-  +[W2: mini diary book - the GUI version](0MOOC/GUI.md)
+  + [W2: mini diary book - the GUI version](0MOOC/GUI.md)
 - [基础旋进](1sTry/README.md)
 - [迭代作品](2nDev/README.md)
 - [人生首秀](3rDemo/README.md)

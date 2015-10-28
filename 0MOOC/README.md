@@ -6,3 +6,4 @@
 ### W2: mini diary book - the GUI version
 
 - 150924 大妈创建
+- 151028 last updated
