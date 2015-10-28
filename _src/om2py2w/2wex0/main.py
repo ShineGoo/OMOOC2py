@@ -18,8 +18,7 @@ def readDiary():
         printOut = '''Hi there, here's your current diary collection:\n\n%s''' % existingDiaries
     else:
         existingDiaries = ""
-        printOut= '''I cannot find your diary book. 
-        No worries tough, I'll create one called 'myDiary.txt' for you.'''
+        printOut= '''I cannot find your diary book.\nNo worries tough, I'll create one called 'myDiary.txt' for you.'''
     return printOut
     
 def getNewDiary():
@@ -51,7 +50,7 @@ T = Text(root)
 T.grid(row=0, column=0, columnspan=2)
 T.insert(END, printOut)
 
-label = ttk.Label(root, text = "\nEnter your one lien diary below:", wraplength = 300, background = 'white')
+label = ttk.Label(root, text = "\nEnter your one line diary below:", wraplength = 300, background = 'white')
 label.grid(row=1, column=0, columnspan=2)
 
 entry = ttk.Entry(root, width = 30)
@@ -73,5 +72,3 @@ buttonSubmit.config(command = getNewDiary)
 buttonContinue.config(command = reEnter)
 
 root.mainloop()
-
-if __name__ =="__main__": main()
