@@ -10,5 +10,6 @@
   + [Useful Resources]()
     * [GitBook Resources](draft/gitbookResources.md)
     * [Terminal related Resources](draft/terminalResources.md)
+    * [Terminal related Resources](draft/netResources.md)
   + [Tutorial Draft](draft/tutorialDraft.md)
 - [有关](ABOUT.md)
