@@ -1,12 +1,14 @@
 # Task '3W Net' related Resources
 ## UDP sockets
-设置github与gitbook double push时需编辑 .git/config文件，选择在terminal中使用nano编辑。
-1. [Community Help Wiki](https://help.ubuntu.com/community/Nano)
-
-   使用该页面中以下两个功能：
-     * Save and Save as are both accomplished with the Write Out command, Ctrl-O.
+### Definitions:
+* [Wiki def for network socket](https://en.wikipedia.org/wiki/Network_socket) 
+  A net work socket is an endpoint of an inter-process communication across a computer
+  network. Today, most communication between computers is based on the Internet Protocol;
+  therefore most network sockets are Internet sockets.
   
-     When prompted, press enter to accept the existing file name. To save as another file 
-     name, type in the new name and press Enter.
+  An Internet socket is characterized by at least the following:
   
-     * Close a file with the Ctrl-X key combination. Closing a file also closes nano.
+  * Local socket address: Local IP address and port number
+  
+  * Protocol: A transport protocol (e.g., TCP, UDP, raw IP). Thus, TCP port 53 and UDP
+    port 53 are distinct sockets.
