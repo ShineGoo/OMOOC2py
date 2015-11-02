@@ -1,6 +1,7 @@
 # Summary
 - [教学反转](0MOOC/README.md)
   + [W2: mini diary book - the GUI version](0MOOC/GUI.md)
+  + [W3: mini diary book - the NET version](draft/netResources.md)
 - [基础旋进](1sTry/README.md)
 - [迭代作品](2nDev/README.md)
 - [人生首秀](3rDemo/README.md)
@@ -10,6 +11,6 @@
   + [Useful Resources]()
     * [GitBook Resources](draft/gitbookResources.md)
     * [Terminal related Resources](draft/terminalResources.md)
-    * [Terminal related Resources](draft/netResources.md)
+    * [Net related Resources](draft/netResources.md)
   + [Tutorial Draft](draft/tutorialDraft.md)
 - [有关](ABOUT.md)
