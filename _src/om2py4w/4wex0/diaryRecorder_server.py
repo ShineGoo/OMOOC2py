@@ -6,7 +6,13 @@ from datetime import datetime
 from bottle import route, request, post, run, template
 
 diary_existence = exists("myDiary.txt")
-current_date_time = str(datetime.now())
+#current_date_time = str(datetime.now())
+#current_date_time = current_date_time[:(len(current_date_time)-7)]
+
+def getTime():
+    current_date_time = str(datetime.now())
+    current_date_time = current_date_time[:(len(current_date_time)-7)]
+    return current_date_time
 
 def readDiary():
     if diary_existence:
@@ -21,7 +27,7 @@ def readDiary():
     return existingDiaries
     
 def writeDiary(receivedDiary): 
-    diary = current_date_time + "\n" + receivedDiary +"\n\n"
+    diary = getTime() + "\n" + receivedDiary +"\n\n"
     txt2 = open("myDiary.txt", 'a')
     txt2.write(diary)
     txt2.close()
