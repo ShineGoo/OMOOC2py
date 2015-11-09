@@ -9,7 +9,7 @@ def printD(sourceResponse):
     x = sourceResponse.text
     y = x.split('<ul>')[1].split('\n<br>\n')
     for w in y:
-        print w
+        print w.replace("</ul>","").replace("</html>","")
         
 def writeDiary(): 
     print "Please key in your one line diary for today. Press ctrl+C to quit."

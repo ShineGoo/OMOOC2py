@@ -28,14 +28,19 @@
 
   - 在运行client的terminal窗口中，新内容被存储后输入“y“则可再次写入新的日记，
     输入任何其他内容退出client程序。
+    
+#### 使用截图
+
+- Web version
+
+![snapshot1](/screenshots/w4_web.png)
+
+- CLI version
+
+![snapshot1](/screenshots/w4_cli.png)
   
 - 私人笔记:
  + SAE 发布服务
  + web 页面端口
  + 用户认证
  
- ## 使用截图
-
-- try inserting image
-
-![snapshot1](/screenshots/pattern5.jpg)

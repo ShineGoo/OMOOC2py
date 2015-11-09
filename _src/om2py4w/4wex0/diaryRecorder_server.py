@@ -36,7 +36,7 @@ def writeDiary(receivedDiary):
 # template. will be moved to a separate file later
 d_tpl = '''
            <html>
-           Welcome!<br>
+           Welcome!<br><br>
            <form action="/diary" method="post">
             Input your online diary here: <input name="newdiary" type="text" />
             <input value="Submit" name="do_submit" type="submit">
