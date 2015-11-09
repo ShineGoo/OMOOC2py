@@ -33,3 +33,9 @@
  + SAE 发布服务
  + web 页面端口
  + 用户认证
+ 
+ ## 使用截图
+
+- try inserting image
+
+![snapshot1](/screenshots/pattern5.jpg)
