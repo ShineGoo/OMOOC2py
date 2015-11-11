@@ -3,6 +3,7 @@
   + [W2: mini diary book - the GUI version](0MOOC/GUI.md)
   + [W3: mini diary book - the NET version](draft/netResources.md3)
   + [W4: mini diary book - the WEB version](_src/om2py4w/README.md)
+  + [SAE HowTo](0MOOC/SAE.md)
 
 - [基础旋进](1sTry/README.md)
 - [迭代作品](2nDev/README.md)
