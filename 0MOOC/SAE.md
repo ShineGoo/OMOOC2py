@@ -4,18 +4,19 @@
     
 点击 "+创建新应用" 按钮然后跟随指示操作。在"APPID"处我输入的是 "agathehello"，开发语言选择Python。
 下面的截图意味着创建成功。
-![screenshot](screenshots/sae_1.png)
+![screenshot](/screenshots/sae_1.png)
     
 ### Step 2: 将应用同步到本地
-    '''
-    localhost:Documents apple$ cd /Users/apple/Documents/PythonClass/SAE 
-    localhost:SAE apple$ svn co https://svn.sinacloud.com/agathehello
-    '''
-    此时按指示输入SAE的用户名（即注册时填写的安全邮箱）与密码，同步完成后得到反馈'''Checked out revision 0.'''
-    应用同步成功，目录"SAE"中出现名为"agathehello"目录（注意此目录不是我手动创建的）。进入该目录，创
-    建下一级目录作为版本，目录的名称为应用的版本号，需为正整数。每个应用可创建多个版本，这些版本可以在线上同
-    时运行。一般从版本1开始，但此处用创建版本2举例。注意
-    在浏览器访问版本2时应使用地址http://2.agathehello.sinaapp.com/。
+    
+'''
+localhost:Documents apple$ cd /Users/apple/Documents/PythonClass/SAE 
+localhost:SAE apple$ svn co https://svn.sinacloud.com/agathehello
+'''
+
+此时按指示输入SAE的用户名（即注册时填写的安全邮箱）与密码，同步完成后得到反馈'''Checked out revision 0.'''
+应用同步成功，目录"SAE"中出现名为"agathehello"目录（注意此目录不是我手动创建的）。进入该目录，创建下一级
+目录作为版本，目录的名称为应用的版本号，需为正整数。每个应用可创建多个版本，这些版本可以在线上同时运行。一般
+从版本1开始，但此处用创建版本2举例。注意在浏览器访问版本2时应使用地址http://2.agathehello.sinaapp.com/。
     '''
     localhost:SAE apple$ cd agathehello
     localhost:agathehello apple$ mkdir 2
@@ -69,6 +70,6 @@
     '''
     
 ### Step 6: 在浏览器中访问应用
-    现在，在浏览器中输入您应用的地址，就可以马上访问了；本例地址为 http://2.agathehello.sinaapp.com/ 
+现在，在浏览器中输入您应用的地址，就可以马上访问了；本例地址为 http://2.agathehello.sinaapp.com/ 
     
     
