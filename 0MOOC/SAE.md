@@ -1,9 +1,10 @@
 ## Use SAE
 
-### Step 1: 在 http://sae.sina.com.cn/ 上创建新应用，
-    点击 "+创建新应用" 按钮然后跟随指示操作。在"APPID"处我输入的是 "agathehello"，开发语言选择Python。
-    下面的截图意味着创建成功。
-    ![screenshot](screenshots/sae_1.png)
+### Step 1: 在 http://sae.sina.com.cn/ 上创建新应用
+    
+点击 "+创建新应用" 按钮然后跟随指示操作。在"APPID"处我输入的是 "agathehello"，开发语言选择Python。
+下面的截图意味着创建成功。
+![screenshot](screenshots/sae_1.png)
     
 ### Step 2: 将应用同步到本地
     '''
