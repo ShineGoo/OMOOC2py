@@ -37,7 +37,9 @@
         start_response(status, response_headers)
         return ['Hello, Agathe']
     application = sae.create_wsgi_app(app)
-    
+
+
+
 ### Step 4: 将版本目录中所有的文件提交到svn中
 
     localhost:agathehello apple$ svn add 2/
@@ -65,8 +67,24 @@
     Sending        2/index.wsgi
     Transmitting file data .
     Committed revision 3.
+
+注意若已checkout则第一条命令无需执行。
     
 ### Step 6: 在浏览器中访问应用
 现在，在浏览器中输入您应用的地址，就可以马上访问了；本例地址为 http://2.agathehello.sinaapp.com/ 
     
     
+## Use SAE‘s MySQL database
+
+### Step 1: 进入SAE控制台，地址为 http://sae.sina.com.cn/
+
+### Step 2: 在"应用管理"列表中选择想要管理数据库的相应应用。单击后进入该应用的管理面板。例如，我在我的
+"应用管理"列表中单击web app "agathehello"即可进入应用agathehello的管理页面。
+
+### Step 3: 在应用agathehello的管理页面的左侧管理面板选择"数据库服务 -> MySQL"，在随后出现的页面中选择
+”共享型MySQL“,进入url形如"http://sae.sina.com.cn/?m=mysqlmng&a=index&app_id=agathehello"的页面。
+在该页面中，选择"服务首页 -> 操作 -> 管理MySQL"，即可管理应用agathehello的MySQL数据库了。
+
+### Step 4: 为储存app agathehello中产生的数据，我在app对应的数据中新建了table "diary0", 内含两列：
+列"ts"格式为"datetime", 列"diary"格式为"text"。创建新表格后的截图见下图：   
+![screenshot](/screenshots/sae_mydql_diary0.png)
