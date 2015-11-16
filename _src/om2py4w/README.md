@@ -38,7 +38,26 @@
 - CLI version
 
 ![snapshot1](/screenshots/w4_cli.png)
+
+### diaryRecorder-verWeb-ver1
+Update ver 0 by replacing myDiary.txt with myDiary.db.
+
+- Reason for this update is that in order to create a 'real' web application
+  (other than one that works locally on localhost), it is both reasonable and
+  necessary to save data in a database.
   
+- ```sqlite3``` is used to do relevant database programming.
+
+- scripts for ver1 reside in the same directory as those for ver0: _src/om2py4w/4wex0
+  [server script] (http:....)
+  [client script] (haven't started yet ><)
+  
+- The functionality and appearance of ver1 is identical to ver0 so I haven't made 
+  any screenshots for this version. With the external look of the application
+  remains unchanged, data involved are now stored in a much more structural way. 
+
+
+## Next Steps  
 - 私人笔记:
  + SAE 发布服务
  + web 页面端口

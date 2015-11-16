@@ -1,32 +1,39 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from os.path import exists
+#from os.path import exists
 from datetime import datetime
 from bottle import route, request, post, run, template
+import sqlite3
 
-book_name = "myDiary.txt"
-diary_existence = exists(book_name)
-
-def getTime():
-    current_date_time = str(datetime.now())
-    current_date_time = current_date_time[:(len(current_date_time)-7)]
-    return current_date_time
+book_name = "myDiary.db"
+#diary_existence = exists(book_name)
 
 def readDiary():
-    if diary_existence:
-        txt = open("myDiary.txt")
-        existingDiaries = txt.readlines()
-        txt.close()
-    else:
-        existingDiaries = ""
-    return existingDiaries
+    conn = sqlite3.connect(book_name, \
+           detect_types=sqlite3.PARSE_DECLTYPES | sqlite3.PARSE_COLNAMES)
+    cursor = conn.cursor()
+    existingDiaries = cursor.execute("select * from diary").fetchall()
+    x = []
+    for row in existingDiaries:
+        z = []
+        ts = str(row[0])
+        ts = ts[:len(ts)-7]
+        z.append(ts)
+        z.append(row[1])
+        x.append(z)
+    conn.close()
+    return x
+
     
 def writeDiary(receivedDiary): 
-    diary = getTime() + "\n" + receivedDiary +"\n\n"
-    txt2 = open("myDiary.txt", 'a')
-    txt2.write(diary)
-    txt2.close()
+    conn = sqlite3.connect(book_name, \
+           detect_types=sqlite3.PARSE_DECLTYPES | sqlite3.PARSE_COLNAMES)
+    cursor = conn.cursor()
+    cursor.execute("insert into diary (ts, diary) values (?, ?)", \
+                   (datetime.now(), receivedDiary))
+    conn.commit()
+    conn.close()
 
 # template. will be moved to a separate file later
 d_tpl = '''
@@ -37,11 +44,11 @@ d_tpl = '''
             <input value="Submit" name="do_submit" type="submit">
             </form>
             <p>Hi there, here's your current diary collection:</p>
-            <ul>
+            <p>
             % for line in d:
-            {{line}}<br>
+            {{line[0]}}<br>{{line[1]}}<br><br>
             % end
-            </ul>
+            </p>
            </html>'''
 
 
@@ -54,7 +61,6 @@ def diary():
 def newDiary():
     #getValue = request.POST.decode('utf-8')
     nd = request.POST.get('newdiary')
-#    nd = request.forms.get('newDiary')
     if nd:
         writeDiary(nd)
     return template(d_tpl, d = readDiary())

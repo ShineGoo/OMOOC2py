@@ -12,7 +12,8 @@
     localhost:SAE apple$ svn co https://svn.sinacloud.com/agathehello
 
 
-此时按指示输入SAE的用户名（即注册时填写的安全邮箱）与密码，同步完成后得到反馈```Checked out revision 0.```
+此时按指示输入SAE的用户名（即注册时填写的安全邮箱）与密码，同步完成后得到反馈
+```Checked out revision 0.```
 应用同步成功，目录"SAE"中出现名为"agathehello"目录（注意此目录不是我手动创建的）。进入该目录，创建下一级
 目录作为版本，目录的名称为应用的版本号，需为正整数。每个应用可创建多个版本，这些版本可以在线上同时运行。一般
 从版本1开始，但此处用创建版本2举例。注意在浏览器访问版本2时应使用地址http://2.agathehello.sinaapp.com/。
