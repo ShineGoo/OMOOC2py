@@ -8,6 +8,7 @@ import time
 
 #get db connection
 def get_conn():
+    # 'charaset' should be set to the encoding of the corresponding database  
     conn= MySQLdb.connect(host=sae.const.MYSQL_HOST,user=sae.const.MYSQL_USER,
                           passwd=sae.const.MYSQL_PASS,db=sae.const.MYSQL_DB,
                           port=int(sae.const.MYSQL_PORT),charset='utf8')
@@ -30,6 +31,17 @@ def writeDiary(receivedDiary):
 # template.
 d_tpl = '''
            <html>
+           <head>
+           <style>
+           body {
+               background-image: url("http://i.imgur.com/i3OA2PJ.jpg");
+               background-repeat: repeat;
+               background-position: rigt top;
+               margin-right: 200px;
+           }
+           </style>
+           </head>
+           <body text="white">
            Welcome!<br><br>
            <form action="/" method="post">
             Input your online diary here: <input name="newdiary" type="text" />
@@ -41,6 +53,7 @@ d_tpl = '''
             {{str(line[0])}}<br>{{str(line[1])}}<br><br>
             % end
             </p>
+            </body>
            </html>'''
 
 #create a Bottle object 'app', and map all functions to app's URL    
@@ -49,7 +62,11 @@ debug(True)
 
 @app.get('/')
 def web_index():
-    return template(d_tpl, d = get_conn())    
+    return template(d_tpl, d = get_conn())
+
+@app.get('/static/<filename:path>')
+def sever_static(filename):
+    return static_file(filename, root = '')    
     
 @app.post('/')
 def newDiary():
@@ -60,3 +77,5 @@ def newDiary():
     return template(d_tpl, d = get_conn())
 
 application = sae.create_wsgi_app(app)
+
+

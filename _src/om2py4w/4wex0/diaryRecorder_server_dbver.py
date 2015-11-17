@@ -3,7 +3,7 @@
 
 #from os.path import exists
 from datetime import datetime
-from bottle import route, request, post, run, template
+from bottle import route, request, post, run, template, static_file
 import sqlite3
 
 book_name = "myDiary.db"
@@ -38,6 +38,17 @@ def writeDiary(receivedDiary):
 # template. will be moved to a separate file later
 d_tpl = '''
            <html>
+           <head>
+           <style>
+           body {
+               background-image: url("/static/water_pattern.jpg");
+               background-repeat: repeat;
+               background-position: rigt top;
+               margin-right: 200px;
+           }
+           </style>
+           </head>
+           <body text="white">
            Welcome!<br><br>
            <form action="/diary" method="post">
             Input your online diary here: <input name="newdiary" type="text" />
@@ -49,8 +60,13 @@ d_tpl = '''
             {{line[0]}}<br>{{line[1]}}<br><br>
             % end
             </p>
+            </body>
            </html>'''
 
+
+@route('/static/<filename:path>')
+def sever_static(filename):
+    return static_file(filename, root = '')
 
 @route('/diary')
 def diary():

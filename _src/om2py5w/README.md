@@ -14,8 +14,10 @@
   
   - 在浏览器地址栏输入 http://3.agathehello.sinaapp.com/ ，在文本栏内输入新日记的内容，点"submit"按
     钮或按回车键即可提交。文本栏下方是所有过往日记的记录，新提交的日记将出现在记录中。
-    
-- 使用command line后台服务：
+
+#### 使用截图
+
+![snapshot1](/screenshots/sae_diary.png)
 
 ### Note on Database
 
