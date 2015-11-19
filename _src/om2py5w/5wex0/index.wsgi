@@ -18,7 +18,7 @@ def get_conn():
                           passwd=sae.const.MYSQL_PASS,db=sae.const.MYSQL_DB,
                           port=int(sae.const.MYSQL_PORT),charset='utf8')
     cursor = conn.cursor()
-    cursor.execute("select * from diary0")
+    cursor.execute("select * from diary0 ORDER BY ts DESC")
     data = cursor.fetchall()
     conn.close()
     return data
