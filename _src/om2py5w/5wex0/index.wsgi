@@ -5,6 +5,11 @@ from bottle import Bottle, route, run, template, request, response, post, get, s
 import sae.const
 import MySQLdb
 import time
+import sys
+
+default_encoding = 'utf-8'
+reload(sys)
+sys.setdefaultencoding(default_encoding)
 
 #get db connection
 def get_conn():
