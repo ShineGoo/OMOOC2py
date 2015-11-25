@@ -4,7 +4,7 @@
 
 ### diaryRecorder-verSAE-ver0 使用手册
 
-- script for ver0 can be found in _src/om2py4w/5wex0, the files svn to SAE version 
+- script for ver0 can be found in _src/om2py5w/5wex0, the files svn to SAE version 
   directory are "index.wsgi" and "config.yaml"
 
 - To find how did I 'upload' those two files to my SAE account, see "教学反转-SAE HowTo" in
