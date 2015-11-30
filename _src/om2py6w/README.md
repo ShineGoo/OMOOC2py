@@ -23,6 +23,13 @@
   directory are "menu0.sql" and "diary0.sql".
   
   
+### 开发中遇到的问题
+
+- 如果用户在公众号中输入了一条过长的日记，则再在公众号输入“read”则无法正常反馈现有日记记录，但是仍可以写入
+  新日记，web端读写也正常。"过长的日记"截图如下:
+  ![snapshot1](/screenshots/weixin_error.png)
+
+  
 
 - 私人笔记:
     + 移动 web 应用
