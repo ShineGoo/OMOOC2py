@@ -1,4 +1,4 @@
-# # -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 import sae
 import urlparse
 import xml.etree.ElementTree as ET
@@ -69,11 +69,21 @@ def get_conn():
     return data
 
 #format raw db records
+#should be able to handel long lines
 def format_diary(raw):
     message = "Hi there, here's your current diary collection:\n\n"
     for line in raw:
         # transfer unicode into string
-        message = message + str(line[0]) + "\n" + str(line[1].encode('UTF-8')) + "\n\n"
+        if len(line[1])>=50:
+            line1=line[1][:50]+"......"
+        else:
+            line1=line[1]
+        line1 = str(line1.encode('UTF-8'))
+        message = message + str(line[0]) + "\n" + line1 + "\n\n"
+        
+    if len(message) >= 600:
+        message = message[:600]+"\n"+"......"
+    message = message + "\nFor complete record, please visit 3.agathehello.sinaapp.com"
     return message
     
 
