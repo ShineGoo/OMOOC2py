@@ -21,9 +21,9 @@
         access_key = XXXX-XXXX-XXXX
         secret_key = XXXXXXXXXXXXXXXXXXX
         associate_tag = XXXXXXXXXXXXXX
-   * 进入python，试用python-amazon-product-api
+  * 进入python，试用python-amazon-product-api
      
-     ```\>\>\> from amazonproduct import *
+     ```\>>> from amazonproduct import *
         \>>> api = API(locale='us')
         \>>> items = api.item_search('Books', Publisher="O'Reilly")
         \>>> items
