@@ -23,10 +23,10 @@
         associate_tag = XXXXXXXXXXXXXX
   * 进入python，试用python-amazon-product-api
      
-     ```\>>> from amazonproduct import *
-        \>>> api = API(locale='us')
-        \>>> items = api.item_search('Books', Publisher="O'Reilly")
-        \>>> items
+        >>> from amazonproduct import *
+        >>> api = API(locale='us')
+        >>> items = api.item_search('Books', Publisher="O'Reilly")
+        >>> items
 
 ### 3. [Boto3](https://aws.amazon.com/sdk-for-python/)
 在aws.amazon.com上官方给出的AWS SDK(Software Development Kit)，但时还未尝试。
