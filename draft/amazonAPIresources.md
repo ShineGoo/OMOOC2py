@@ -10,12 +10,36 @@
 ### 2. [python-amazon-product-api](https://pypi.python.org/pypi/python-amazon-product-api/)
 * 经试用可以进行连接与基本查询（待补充代码）
 * [documentation](http://python-amazon-product-api.readthedocs.org/en/latest/index.html#)
+* 试用时使用的code：
+  * 安装：```$ sudo pip install python-amazon-product-api```
+    创建amazon api credentials 文件： 
+    ```localhost:~ apple$ touch .amazon-product-api
+       localhost:~ apple$ vim .amazon-product-api```
+   * 在vim编辑器中编辑文件```.amazon-product-api```的内容，编辑好的内容如下：
+     ```localhost:~ apple$ cat .amazon-product-api
+        [Credentials]
+        access_key = XXXX-XXXX-XXXX
+        secret_key = XXXXXXXXXXXXXXXXXXX
+        associate_tag = XXXXXXXXXXXXXX```
+   * 进入python，试用python-amazon-product-api
+     ```>>> from amazonproduct import *
+        >>> api = API(locale='us')
+        >>> items = api.item_search('Books', Publisher="O'Reilly")
+        >>> items```
 
 ### 3. [Boto3](https://aws.amazon.com/sdk-for-python/)
 在aws.amazon.com上官方给出的AWS SDK(Software Development Kit)，但时还未尝试。
    
 ### 4. [bootlenose](https://github.com/lionheart/bottlenose)
 试了一下，查询时会报错。还未再次尝试。
+    >>> import bottlenose
+    >>> AWS_ACCESS_KEY_ID = 'XXXX-XXXX-XXXX' #my access key
+    >>> AWS_SECRET_ACCESS_KEY = 'XXXXXXXXXXXXXXXXXXX' #my secret access key
+    >>> AWS_ASSOCIATE_TAG = 'XXXXXXXXXXXXXX' #my associate tag
+    >>> amazon = bottlenose.Amazon(AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_ASSOCIATE_TAG)
+    >>> response = amazon.ItemLookup(ItemId="0596520999", ResponseGroup="Images",
+    ... SearchIndex="Books", IdType="ISBN")
+上面的code的最后一个命令反悔了一个”HTTP Error 403: Forbidden“ Error。
 
 ## 连接API所需的credentials
 1. AWS Access Key ID
@@ -28,7 +52,8 @@
      access key at any time. 创立新access key id的时候可以看见对应的secret key。
 3. AWS associate tage
 即亚马逊联盟的ID，需申请。申请时需先选择所在地区，先申请了中国区的，美国区需电话验证所以目前为申请。
-AWS associate tage申请入口：http://docs.aws.amazon.com/AWSECommerceService/latest/DG/becomingAssociate.html
+AWS associate tage申请入口：
+http://docs.aws.amazon.com/AWSECommerceService/latest/DG/becomingAssociate.html
 
 ## 其他  
 ### 1. Vim
