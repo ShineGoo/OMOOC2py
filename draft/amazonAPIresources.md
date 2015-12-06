@@ -20,12 +20,12 @@
 ## 连接API所需的credentials
 1. AWS Access Key ID
 2. AWS Secret Key
-* [documentation](http://docs.aws.amazon.com/general/latest/gr/signing_aws_api_requests.html)
-* 在[这个网址]中使用我原有的amazon购物用的邮箱与秘密登陆，然后在section"Your Security Credentials"
-  中找到 AWS Access Key ID
-* As described in a previous announcement, you cannot retrieve the existing secret 
-  access keys for your AWS root account, though you can still create a new root 
-  access key at any time. 创立新access key id的时候可以看见对应的secret key。
+   * [documentation](http://docs.aws.amazon.com/general/latest/gr/signing_aws_api_requests.html)
+   * 在[这个网址]中使用我原有的amazon购物用的邮箱与秘密登陆，然后在section"Your Security Credentials"
+     中找到 AWS Access Key ID
+   * As described in a previous announcement, you cannot retrieve the existing secret 
+     access keys for your AWS root account, though you can still create a new root 
+     access key at any time. 创立新access key id的时候可以看见对应的secret key。
 3. AWS associate tage
 即亚马逊联盟的ID，需申请。申请时需先选择所在地区，先申请了中国区的，美国区需电话验证所以目前为申请。
 AWS associate tage申请入口：http://docs.aws.amazon.com/AWSECommerceService/latest/DG/becomingAssociate.html
