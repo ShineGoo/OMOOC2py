@@ -16,5 +16,6 @@
     * [GitBook Resources](draft/gitbookResources.md)
     * [Terminal related Resources](draft/terminalResources.md)
     * [Net related Resources](draft/netResources.md)
+    * [Amazon API Resources](draft/amazonAPIresources.md)
   + [Tutorial Draft](draft/tutorialDraft.md)
 - [有关](ABOUT.md)
