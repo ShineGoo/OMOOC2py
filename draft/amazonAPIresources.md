@@ -12,10 +12,10 @@
 * [documentation](http://python-amazon-product-api.readthedocs.org/en/latest/index.html#)
 * 试用时使用的code：
   * 安装：```$ sudo pip install python-amazon-product-api```
-    创建amazon api credentials 文件： 
+  * 创建amazon api credentials 文件： 
     ```localhost:~ apple$ touch .amazon-product-api
-       localhost:~ apple$ vim .amazon-product-api```
-   * 在vim编辑器中编辑文件```.amazon-product-api```的内容，编辑好的内容如下：
+        localhost:~ apple$ vim .amazon-product-api```
+  在vim编辑器中编辑文件```.amazon-product-api```的内容，编辑好的内容如下：
      ```localhost:~ apple$ cat .amazon-product-api
         [Credentials]
         access_key = XXXX-XXXX-XXXX
@@ -39,7 +39,7 @@
     >>> amazon = bottlenose.Amazon(AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_ASSOCIATE_TAG)
     >>> response = amazon.ItemLookup(ItemId="0596520999", ResponseGroup="Images",
     ... SearchIndex="Books", IdType="ISBN")
-上面的code的最后一个命令反悔了一个”HTTP Error 403: Forbidden“ Error。
+上面的code的最后一个命令返回了一个”HTTP Error 403: Forbidden“ Error。
 
 ## 连接API所需的credentials
 1. AWS Access Key ID
