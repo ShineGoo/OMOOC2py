@@ -1,13 +1,13 @@
 # Amazon API Resources
   
 ## Introduction
-   此次要使用的Amazon API全名"Amazon Product Advertising API", 原名"Associates Web Service （AWS）",
-   现在很多相关的库及教程仍使用AWS的称呼。
+此次要使用的Amazon API全名"Amazon Product Advertising API", 原名"Associates Web Service （AWS）",
+现在很多相关的库及教程仍使用AWS的称呼。
    
 ## Python库
-### [官方资源](https://aws.amazon.com/python/)
+### 1. [官方资源](https://aws.amazon.com/python/)
 
-### [python-amazon-product-api](https://pypi.python.org/pypi/python-amazon-product-api/)
+### 2. [python-amazon-product-api](https://pypi.python.org/pypi/python-amazon-product-api/)
    经试用可以进行连接与基本查询（待补充代码）
    * [documentation](http://python-amazon-product-api.readthedocs.org/en/latest/index.html#)
 
