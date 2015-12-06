@@ -14,18 +14,19 @@
   * 安装：```$ sudo pip install python-amazon-product-api```
   * 创建amazon api credentials 文件： 
     ```localhost:~ apple$ touch .amazon-product-api
-        localhost:~ apple$ vim .amazon-product-api```
+        localhost:~ apple$ vim .amazon-product-api
   在vim编辑器中编辑文件```.amazon-product-api```的内容，编辑好的内容如下：
      ```localhost:~ apple$ cat .amazon-product-api
         [Credentials]
         access_key = XXXX-XXXX-XXXX
         secret_key = XXXXXXXXXXXXXXXXXXX
-        associate_tag = XXXXXXXXXXXXXX```
+        associate_tag = XXXXXXXXXXXXXX
    * 进入python，试用python-amazon-product-api
-     ```>>> from amazonproduct import *
-        >>> api = API(locale='us')
-        >>> items = api.item_search('Books', Publisher="O'Reilly")
-        >>> items```
+     
+     ```\>\>\> from amazonproduct import *
+        \>>> api = API(locale='us')
+        \>>> items = api.item_search('Books', Publisher="O'Reilly")
+        \>>> items
 
 ### 3. [Boto3](https://aws.amazon.com/sdk-for-python/)
 在aws.amazon.com上官方给出的AWS SDK(Software Development Kit)，但时还未尝试。
