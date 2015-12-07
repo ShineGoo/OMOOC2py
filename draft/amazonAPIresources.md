@@ -8,7 +8,7 @@
 ### 1. [官方资源](https://aws.amazon.com/python/)
 
 ### 2. [python-amazon-product-api](https://pypi.python.org/pypi/python-amazon-product-api/)
-* 经试用可以进行连接与基本查询（待补充代码）
+* 经试用可以进行连接与基本查询
 * [documentation](http://python-amazon-product-api.readthedocs.org/en/latest/index.html#)
 * 试用时使用的code：
   * 安装：```$ sudo pip install python-amazon-product-api```
@@ -28,7 +28,7 @@
         >>> items = api.item_search('Books', Publisher="O'Reilly")
         >>> items
         >>> type(items)
-   最后一条命令返回值为<class 'amazonproduct.processors._lxml.SearchPaginator'>
+   最后一条命令返回值为 "class 'amazonproduct.processors._lxml.SearchPaginator'"
    
 
 ### 3. [Boto3](https://aws.amazon.com/sdk-for-python/)
@@ -44,7 +44,9 @@
     >>> response = amazon.ItemLookup(ItemId="0596520999", ResponseGroup="Images",
     ... SearchIndex="Books", IdType="ISBN")
     >>> type(response)
-最后一条命令返回值为 <type 'str'>
+最后一条命令返回值为 "type 'str'". 这种返回值类型比python-amazon-product-api返回的'amazonproduct.processors._lxml.SearchPaginator'
+更好处理。前者可直接查看，也可用标准xml parser处理；后者因为不是标准的xml文件，用xml.dom.minidom，
+xml.etree.ElementTree parse时均报错。
 
 
 ## 连接API所需的credentials
@@ -104,3 +106,8 @@ http://docs.aws.amazon.com/AWSECommerceService/latest/DG/becomingAssociate.html
 * Press "a" to start INSERT mode (in append after cursor mode, which is what you are probably used to).
 * To leave INSERT mode, press “Esc”.
 * To save your file, use “:w.” To save and exit, use “:x”.
+
+## Note for 12.7
+1. 现在觉得python-amazon-product-api返回变量类型难以操纵且缺少参考文档，反而时bottlenose返回文本更易读易操纵。
+2. 了解了在api中获得editorial review的方法。
+3. 需确认大牛的review不是copyrighted的，否则无法用api获得。
