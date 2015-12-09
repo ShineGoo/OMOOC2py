@@ -3,9 +3,13 @@
 import bottlenose
 from lxml import etree
 
-AWS_ACCESS_KEY_ID = 'AKIAIWEUU355FB2H7O7Q' #my access key
-AWS_SECRET_ACCESS_KEY = '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' #my secret access key 
-AWS_ASSOCIATE_TAG = 'agathehello-23' #my associate tag
+text=open('amazonAPIkeys.txt')
+x=text.read().split('\n')
+text.close()
+
+AWS_ACCESS_KEY_ID = x[0] #my access key
+AWS_SECRET_ACCESS_KEY = x[1] #my secret access key 
+AWS_ASSOCIATE_TAG = x[2] #my associate tag
 
 amazon = bottlenose.Amazon(AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_ASSOCIATE_TAG)
 

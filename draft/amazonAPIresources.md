@@ -111,3 +111,22 @@ http://docs.aws.amazon.com/AWSECommerceService/latest/DG/becomingAssociate.html
 1. 现在觉得python-amazon-product-api返回变量类型难以操纵且缺少参考文档，反而时bottlenose返回文本更易读易操纵。
 2. 了解了在api中获得editorial review的方法。
 3. 需确认大牛的review不是copyrighted的，否则无法用api获得。
+
+## 12.9: Email Amazon Product Advertising API
+The EditorialReview Response Group does not return some uncopyrighted editorial reviews.
+I tried using two Python wrappers ([python-amazon-product-api](https://pypi.python.org/pypi/python-amazon-product-api/) and
+[bootlenose](https://github.com/lionheart/bottlenose)) to get editorial reviews of a book, 
+given the book's itemID.
+
+However, for book with ID 0787996491, on Amazon.com, there are editorial reviews from Gary Klein, 
+Tom Peters, etc.. But the API, using EditorialReview as Response Group, did not return any 
+of these reviews, it only returns the product description. The missing editorial reviews don't
+have "All rights reserved" at the end so seem not copyrighted.
+
+Book with ID 0230613519 has the same issue. Editorial reviews from Dr. Martin Barnes, Scott Tibbitts, 
+etc. can be seen on Amazon.com, are not copyrighted, but are not included in the API's return value.
+
+Could you kindly confirm for me that all these missing editorial reviews are not available
+ via the Product Advertising API, due to some limitations similar as the copyright issue?
+ 
+ Thanks a lot!  
