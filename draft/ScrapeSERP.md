@@ -13,19 +13,68 @@ The way to achieve this sub-goal is through scraping SERP
 
 ## Scraping SERP is different from scraping static webpages
 ### 1. Headers are essential
+
 ### 2. Knowledge of Proxies are required
 Almost all search engines restrict the number of page downloads from each user, AOL is no
 exception. 
-Proxies can be necessary when web scraping because some websites restrict the number of page downloads from each user. With proxies it looks like your requests come from multiple users so the chance of being blocked is reduced.
 
-Most people seem to first try collecting their proxies from the various free lists such as this one and then get frustrated because the proxies stop working. If this is more than a hobby then it would be a better use of your time to rent your proxies from a provider like packetflip, USA proxies, or proxybonanza. These free lists are not reliable because so many people use them.
+To see how this is an issue, see code '1sTry/amazon/scrapingAmazonURL_AOL_ver1.py' in my 
+repository. In this piece of code, if I search for Gary Klein (see line 14, 17), the result
+count is 107. With 10 results per page, I only need to require for 11 pages when executing
+codes from line 49 to 53. Everything is fine, I successfully get 10 amazon urls per page, 
+102 amazon urls in total (5 search results are missing, I'll look into this later).
+
+However, if I search for Steven Pinker (see line 15, 16), the result count is 975, that is 
+98 pages of content to acquire. This time, if I execute line 49-53 directly, only 20 pages 
+are scraped. The rest of the queries will be denied. To see this, running the code block 
+gives: ```responses[20] 'Request denied: source address is sending an excessive volume of requests.'```
+
+That's why we need proxies.
+
+With proxies it looks like our requests come from multiple users so the chance of being 
+blocked is reduced.
 
 Each proxy will have the format login:password@IP:port
+
 The login details and port are optional. Here are some examples:
 
 bob:eakej34@66.12.121.140:8000
 219.66.12.12
 219.66.12.14:8080
 
-https://webscraping.com/blog/How-to-use-proxies/
+This a free proxy. lists of proxies are not reliable, because so many people use them and 
+they stop working very often. So professional scrapers rent their proxies from a provider 
+like packetflip, USA proxies, or proxybonanza. (source:https://webscraping.com/blog/How-to-use-proxies/)
+
+Other ways to solute the blockage issue include:  other ways to randomly vary the User-Agent 
+header; wait for random amount of time then scrape the next page...
    
+## try using Bing Search API
+### Why Bing
+* Bing Search API has 5,000 free requests per month, it is possible to accomplish our goal if
+we use it efficiently.
+* I haven't tested this yet but I think using an API can help us getting around with the 
+blockage issue we encounter when scraping SERPs.
+* I can simply test the service URI in a browser.
+  To try a service URI, simply paste it into the address bar of the browser. The Bing Search 
+  API supports Basic Authentication so user will be prompted for a user name and password. 
+  Just leave the user-name field empty and copy the user's account key into the password 
+  field. The browser will display the results from the Bing Search API, or prompt the user 
+  to save them depending on the browser and how it’s configured.
+  example:
+  https://api.datamarket.azure.com/Bing/Search/Web?Query=%27%22Editorial%20Reviews%22%20%22Gary%20Klein%22%20site%3AAmazon.com%27&$top=50&$format=json
+  paste the url above to into the address bar of the browser and then the json search result
+  can be viewed in the browser. 
+* [resource 0: account managing address](https://datamarket.azure.com/dataset/bing/search)
+  [resource 1](https://xyang.me/using-bing-search-api-in-python/)
+  [resource 2: Migrating to the Bing Search API](https://onedrive.live.com/view.aspx?resid=9C9479871FBFA822!111&app=Word&authkey=!AGIw0_5GJbU2Wqo)
+
+### Search Operator
+For both AOL and Bing, the search query remains the same. We simply search for:
+"Gary Klein" "Editorial Reviews" "Books" site:Amazon.com 
+Most of Google's search operators and Bing's search operators are the same. See [this link](http://www.howtogeek.com/106751/how-to-use-bings-advanced-search-operators-8-tips-for-better-searches/)
+for reference.
+
+### Miscellanea
+Test in browser is fine. Got a SSL error when requiring from Python. Assigning 
+verify=false solves the problem.

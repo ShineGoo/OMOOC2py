@@ -17,5 +17,7 @@
     * [Terminal related Resources](draft/terminalResources.md)
     * [Net related Resources](draft/netResources.md)
     * [Amazon API Resources](draft/amazonAPIresources.md)
+    * [Scraping SERP Notes](draft/ScrapeSERP.md)
+
   + [Tutorial Draft](draft/tutorialDraft.md)
 - [有关](ABOUT.md)

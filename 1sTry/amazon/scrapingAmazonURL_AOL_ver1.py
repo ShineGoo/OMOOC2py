@@ -48,15 +48,20 @@ def getSerpContent(pageID):
     
 for j in range(2, resultCount/10+2):
     responset = getSerpContent(j)
-    if responset == 'Request denied: source address is sending an excessive volume of requests.':
-        break
-    else:
-        pages.append(j)
-        responses.append(responset.content)
-        print "page %r obtained" %(j)
-    
-    
-#for Steven_Pinker, the result count is 975. If I do line 49-56 directly, only 20 pages are
+    pages.append(j)
+    responses.append(responset.content)
+    print "page %r obtained" %(j)
+
+#for j in range(2, resultCount/10+2):
+#    responset = getSerpContent(j)
+#    if responset == 'Request denied: source address is sending an excessive volume of requests.':
+#        break
+#    else:
+#        pages.append(j)
+#        responses.append(responset.content)
+#        print "page %r obtained" %(j)
+            
+#for Steven_Pinker, the result count is 975. If I do line 49-53 directly, only 20 pages are
 #scraped. The rest of the queries will be denied. To see this: >>> responses[20] 'Request denied: source address is sending an excessive volume of requests.'
 #the solution I can think of for now is to scrape 17 pages, then rest for a while, then scrape
 #17 more pages...
