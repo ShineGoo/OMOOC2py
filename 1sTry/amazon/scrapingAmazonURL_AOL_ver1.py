@@ -11,10 +11,10 @@ import requests
 impory json
 
 #query of interest (recommender specific)
-#recommender = 'Gary_Klein'
-recommender = 'Steven_Pinker'
-q0 = '%22Editorial+Reviews%22+%22Steven+Pinker%22+%22Books%22+site%3Aamazon.com'
-#q0 = '%22Editorial+Reviews%22+%22Gary+Klein%22+%22Books%22+site%3Aamazon.com'
+recommender = 'Gary_Klein'
+#recommender = 'Steven_Pinker'
+#q0 = '%22Editorial+Reviews%22+%22Steven+Pinker%22+%22Books%22+site%3Aamazon.com'
+q0 = '%22Editorial+Reviews%22+%22Gary+Klein%22+%22Books%22+site%3Aamazon.com'
 
 #specify user_agent
 user_agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36"
@@ -24,7 +24,9 @@ headers = {'User-Agent': user_agent}
 #construct url used for searching    
 page = 1
 url = 'http://search.aol.com/aol/search?s_chn=prt_main5&v_t=comsearch&page='+str(page)+'&q='+q0+'&s_it=topsearchbox.search&oreq=915eda57a04c423ab462f6b0a41cbb94'
-# get page 1
+
+#get page 1
+
 response2 = requests.get(url, headers=headers)
 
 #save page 1's content
@@ -35,7 +37,7 @@ responses.append(response2.content)
 
 #get result count
 x = BeautifulSoup(response2.content).findAll(id="result-count")
-resultCount=int(x[0].get_text().split()[1]) #resultCount=975
+resultCount=int(x[0].get_text().split()[1]) #resultCount=107
 
 ####################################
 #get content of rest of the serp's
@@ -46,9 +48,19 @@ def getSerpContent(pageID):
     
 for j in range(2, resultCount/10+2):
     responset = getSerpContent(j)
-    pages.append(j)
-    responses.append(responset.content)
-    print "page %r obtained" %(j)
+    if responset == 'Request denied: source address is sending an excessive volume of requests.':
+        break
+    else:
+        pages.append(j)
+        responses.append(responset.content)
+        print "page %r obtained" %(j)
+    
+    
+#for Steven_Pinker, the result count is 975. If I do line 49-56 directly, only 20 pages are
+#scraped. The rest of the queries will be denied. To see this: >>> responses[20] 'Request denied: source address is sending an excessive volume of requests.'
+#the solution I can think of for now is to scrape 17 pages, then rest for a while, then scrape
+#17 more pages...
+
 ##################################
 #parse page content and get amazon urls
 def linkSelector(sourceurl):
@@ -88,6 +100,7 @@ for j in range(1, resultCount/10+2):
     amazonUrls.append(getAmazonUrl(j))
 
 amazonUrlsGeneric = sum(amazonUrls, [])
+
 
 #save final result:    
 data = {'query': q0, 'pages': pages, 'responsesRaw':responses, 'amazonUrls': amazonUrls}
