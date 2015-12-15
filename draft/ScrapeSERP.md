@@ -13,6 +13,31 @@ The way to achieve this sub-goal is through scraping SERP
 
 ## Scraping SERP is different from scraping static webpages
 ### 1. Headers are essential
+The first attempt is to scrape the search result page the same way as we scrape a static page.
+
+If we input url: http://search.aol.com/aol/search?s_chn=prt_main5&v_t=comsearch&page=2&q=%22Editorial+Reviews%22+%22Gary+Klein%22+%22Books%22+site%3Aamazon.com&s_it=topsearchbox.search&oreq=915eda57a04c423ab462f6b0a41cbb94
+into the address bar of the browser, the search result returned by the browser looks like this:
+![screenshot](/screenshots/aol_search_result_0.png)
+Note that this url no longer works, even in a bowser. See section "3. search URL changes from time to time"
+
+#now with this url in hand, try to scrape this webpage like an ordinary page:
+I use the code below:
+
+    from urllib2 import urlopen, HTTPError
+    from bs4 import BeautifulSoup
+    import requests
+    q0 = '%22Editorial+Reviews%22+%22Gary+Klein%22+%22Books%22+site%3Aamazon.com'
+    page = 2
+    url = 'http://search.aol.com/aol/search?s_chn=prt_main5&v_t=comsearch&page='+str(page)+'&q='+q0+'&s_it=topsearchbox.search&oreq=915eda57a04c423ab462f6b0a41cbb94'
+    html = urlopen(url)
+    response = html.read()
+    bsObj = BeautifulSoup(response)
+    bsObj.h3
+    #result: <h3>Your search returned no results.</h3>
+    for a in bsObj.findAll('a', href=True):
+        print(a['href'])
+        
+In the result for the last commend, no amazon.com url is found, this scraping attempt is failed. 
 
 ### 2. Knowledge of Proxies are required
 Almost all search engines restrict the number of page downloads from each user, AOL is no
@@ -21,13 +46,14 @@ exception.
 To see how this is an issue, see code '1sTry/amazon/scrapingAmazonURL_AOL_ver1.py' in my 
 repository. In this piece of code, if I search for Gary Klein (see line 14, 17), the result
 count is 107. With 10 results per page, I only need to require for 11 pages when executing
-codes from line 49 to 53. Everything is fine, I successfully get 10 amazon urls per page, 
+codes from line 57 to 65. Everything is fine, I successfully get 10 amazon urls per page, 
 102 amazon urls in total (5 search results are missing, I'll look into this later).
 
 However, if I search for Steven Pinker (see line 15, 16), the result count is 975, that is 
-98 pages of content to acquire. This time, if I execute line 49-53 directly, only 20 pages 
-are scraped. The rest of the queries will be denied. To see this, running the code block 
-gives: ```responses[20] 'Request denied: source address is sending an excessive volume of requests.'```
+98 pages of content to acquire. This time, in executing line 57-65, only 20 pages 
+are scraped. The rest of the queries will be denied. For denied requests, the returned value
+for the request is string 'Request denied: source address is sending an excessive volume of requests.'
+
 
 That's why we need proxies.
 
@@ -48,6 +74,9 @@ like packetflip, USA proxies, or proxybonanza. (source:https://webscraping.com/b
 
 Other ways to solute the blockage issue include:  other ways to randomly vary the User-Agent 
 header; wait for random amount of time then scrape the next page...
+
+### 3. search URL changes from time to time
+
    
 ## try using Bing Search API
 ### Why Bing
@@ -66,7 +95,9 @@ blockage issue we encounter when scraping SERPs.
   paste the url above to into the address bar of the browser and then the json search result
   can be viewed in the browser. 
 * [resource 0: account managing address](https://datamarket.azure.com/dataset/bing/search)
+  
   [resource 1](https://xyang.me/using-bing-search-api-in-python/)
+  
   [resource 2: Migrating to the Bing Search API](https://onedrive.live.com/view.aspx?resid=9C9479871FBFA822!111&app=Word&authkey=!AGIw0_5GJbU2Wqo)
 
 ### Search Operator
