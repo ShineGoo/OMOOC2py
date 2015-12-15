@@ -18,7 +18,9 @@ The first attempt is to scrape the search result page the same way as we scrape 
 If we input url: http://search.aol.com/aol/search?s_chn=prt_main5&v_t=comsearch&page=2&q=%22Editorial+Reviews%22+%22Gary+Klein%22+%22Books%22+site%3Aamazon.com&s_it=topsearchbox.search&oreq=915eda57a04c423ab462f6b0a41cbb94
 into the address bar of the browser, the search result returned by the browser looks like this:
 ![screenshot](/screenshots/aol_search_result_0.png)
-Note that this url no longer works, even in a bowser. See section "3. search URL changes from time to time"
+Note that this url does not work all the time, even in a bowser. See code 
+'1sTry/amazon/scrapingAmazonURL_AOL_ver1.py' in my repository, function formURL() should be
+adjusted when search url formatting changes.
 
 #now with this url in hand, try to scrape this webpage like an ordinary page:
 I use the code below:
@@ -74,9 +76,6 @@ like packetflip, USA proxies, or proxybonanza. (source:https://webscraping.com/b
 
 Other ways to solute the blockage issue include:  other ways to randomly vary the User-Agent 
 header; wait for random amount of time then scrape the next page...
-
-### 3. search URL changes from time to time
-
    
 ## try using Bing Search API
 ### Why Bing

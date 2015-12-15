@@ -9,11 +9,14 @@ import urllib2
 from bs4 import BeautifulSoup
 import requests
 import json
+import random
+import time
+
 
 #query of interest (recommender specific)
-#recommender = 'Gary_Klein'
-recommender = 'Steven_Pinker'
-q0 = '%22Editorial+Reviews%22+%22Steven+Pinker%22+%22Books%22+site%3Aamazon.com'
+recommender = 'Richard_Dawkins'
+#recommender = 'Steven_Pinker'
+q0 = '%22Editorial+Reviews%22+%22Richard+Dawkins%22+%22Books%22+site%3Aamazon.com'
 #q0 = '%22Editorial+Reviews%22+%22Gary+Klein%22+%22Books%22+site%3Aamazon.com'
 
 #specify user_agent
@@ -44,7 +47,7 @@ if responses[0].find('Your search returned no results') > -1:
     print "Scraping page 1 failed, please check if the aol search url structure has changed"
 else:
     x = BeautifulSoup(responses[0]).findAll(id="result-count")
-    resultCount=int(x[0].get_text().split()[1])
+    resultCount=int(x[0].get_text().split()[1].replace(",",""))
     print resultCount
 
 ####################################
@@ -54,17 +57,65 @@ def getSerpContent(pageID):
     responset = requests.get(url, headers=headers)
     return responset
 
-for j in range(2, resultCount/10+2):
-    responset = getSerpContent(j)
-    if responset == 'Request denied: source address is sending an excessive volume of requests.':
-        print(responset)
-        break
+#for j in range(2, resultCount/10+2):
+#    responset = getSerpContent(j)
+#    if responset.content == 'Request denied: source address is sending an excessive volume of requests.':
+#        print(responset.content)
+#        break
+#    else:
+#        pages.append(j)
+#        responses.append(responset.content)
+#        print "page %r obtained" %(j)
+
+
+def scrapePageChunck(startPageID, pageCount):
+    pages_chunck = []
+    responses_chunck = []
+    for j in range(startPageID, startPageID+pageCount):
+        responset = getSerpContent(j)
+        if responset.content == 'Request denied: source address is sending an excessive volume of requests.':
+            print(responset.content)
+            break
+        else:
+            pages_chunck.append(j)
+            responses_chunck.append(responset.content)
+            print "page %r obtained" %(j)
+    data = {"pages_chunck":pages_chunck, "responses_chunck":responses_chunck}
+    return data
+        
+#d = scrapePageChunck(2, 18)
+
+results_chunck = []
+
+#request 18 consecutive pages then rest for about 75 secondes, then request another 18 pages 
+for k in range(2, resultCount/10+2, 18):
+    dt = scrapePageChunck(k, 18)
+    if len(dt['pages_chunck']) == 18:
+        results_chunck.append(dt)
+        print "chunck starting from page %r obtained" %(k)
     else:
-        pages.append(j)
-        responses.append(responset.content)
-        print "page %r obtained" %(j)
-            
-# for Steven Pinker, all 98 pages are obtained
+        print "chunck starting from page %r is problematic" %(k)
+        break
+    time.sleep(45+random.random()*60)
+#Richard D runtime approximately 17 mins
+
+#temp = results_chunck[5]['responses_chunck'][1]
+#results_chunck[5]['pages_chunck'][1]
+#xxx = BeautifulSoup(temp).findAll('a', href=True)
+    
+#for link in xxx:
+#    if linkSelector(link['href']):
+#        print(link['href'])
+#check Richard D on Browser, result changes to 400 something after page 47
+         
+# for Steven Pinker, all 98 pages are obtained (however this does not happen all the time)
+for ele in results_chunck:
+    for element in ele['pages_chunck']:
+        pages.append(element)
+    for element2 in ele['responses_chunck']:
+        responses.append(element2)
+
+
 ##################################
 #parse page content and get amazon urls
 def linkSelector(sourceurl):
@@ -106,10 +157,12 @@ for j in range(1, resultCount/10+2):
     amazonUrls.append(getAmazonUrl(j))
 
 amazonUrlsGeneric = sum(amazonUrls, [])
-
+len(amazonUrlsGeneric) # 682
+len(set(amazonUrlsGeneric)) #474
+amazonUrlsGeneric = list(set(amazonUrlsGeneric))
 
 #save final result:    
-data = {'query': q0, 'pages': pages, 'responsesRaw':responses, 'amazonUrls': amazonUrls}
+#data = {'query': q0, 'pages': pages, 'responsesRaw':responses, 'amazonUrls': amazonUrls}
 data2 = {'query': q0, 'amazonUrls': amazonUrlsGeneric}
 
 localPath = '/Users/apple/Documents/gitHub/OMOOC2py/1sTry/amazon/'
