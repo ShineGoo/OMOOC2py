@@ -9,10 +9,15 @@ from requests.auth import HTTPBasicAuth
 import urllib2
 import json
 
-#input area #recommender = 'Steven Pinker' / 'Carol Dweck' / 'Gerd Gigerenzer' / 'James G March'
-recommender = 'James G March'
+#input area #recommender = 'Steven Pinker' / 'Carol Dweck' 'Carol S Dweck' / 'Gerd Gigerenzer' /
+#                          'James G March' 'James March' / 'Gary Klein' 'Gary A Klein'/
+#                          'Keith E. Stanovich' 'Keith Stanovich' /'Daniel Kahneman'/
+#                          'Martin E P Seligman' 'Martin Seligman'/
+#                          'Clayton M Christensen' 'Clayton Christensen'/ 'Richard Dawkins'
+#                          'Daniel C Dennett' 'Daniel Dennett' /'Edward L Deci' ''Edward Deci''
+recommender = 'Edward Deci'
 API_KEY_path = '/Users/apple/Documents/PythonClass/amazonProj/BingSearchAPIkey.txt'
-result_path = '/Users/apple/Documents/PythonClass/amazonProj/'
+result_path = '/Users/apple/Documents/PythonClass/amazonProj/BINGresult/'
 
 #search query
 q0 = '"Editorial Reviews" "'+recommender+'" "Books" site:Amazon.com'
@@ -45,7 +50,7 @@ def getJson(inputurl):
     return json_result_t
     
 # get first 50 results and get result count
-#the offset requested for the starting point of results . The default is zero.
+# the offset requested for the starting point of results . The default is zero.
 
 skip = 0 
 url = formURL(skip)
